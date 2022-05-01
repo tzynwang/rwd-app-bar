@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tzynwang/rwd-app-bar/static/css/main.2d9a550c.css",
-    "main.js": "/tzynwang/rwd-app-bar/static/js/main.b2bd9ad9.js",
-    "static/js/787.9a6fcf81.chunk.js": "/tzynwang/rwd-app-bar/static/js/787.9a6fcf81.chunk.js",
-    "static/media/logo.svg": "/tzynwang/rwd-app-bar/static/media/logo.6ab59c9fdeaac49fb33386175e93920f.svg",
-    "index.html": "/tzynwang/rwd-app-bar/index.html",
-    "main.b2bd9ad9.js.map": "/tzynwang/rwd-app-bar/static/js/main.b2bd9ad9.js.map",
-    "787.9a6fcf81.chunk.js.map": "/tzynwang/rwd-app-bar/static/js/787.9a6fcf81.chunk.js.map"
+    "main.css": "/rwd-app-bar/static/css/main.2d9a550c.css",
+    "main.js": "/rwd-app-bar/static/js/main.b405c776.js",
+    "static/js/787.9a6fcf81.chunk.js": "/rwd-app-bar/static/js/787.9a6fcf81.chunk.js",
+    "static/media/logo.svg": "/rwd-app-bar/static/media/logo.6ab59c9fdeaac49fb33386175e93920f.svg",
+    "index.html": "/rwd-app-bar/index.html",
+    "main.b405c776.js.map": "/rwd-app-bar/static/js/main.b405c776.js.map",
+    "787.9a6fcf81.chunk.js.map": "/rwd-app-bar/static/js/787.9a6fcf81.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2d9a550c.css",
-    "static/js/main.b2bd9ad9.js"
+    "static/js/main.b405c776.js"
   ]
 }
