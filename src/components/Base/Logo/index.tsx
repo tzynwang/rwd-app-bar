@@ -1,26 +1,17 @@
 import React, { memo } from 'react';
-import { styled } from '@mui/material/styles';
 import logoSrc from './../../../assets/logo.svg';
+import * as view from './views';
+import type { LogoProps } from './types';
 
-const Base = styled('div')(({ theme }) => ({
-  display: 'grid',
-  gap: '8px',
-  gridTemplateColumns: 'repeat(2, auto)',
-  alignItems: 'center',
-  color: theme.palette.common.white,
-}));
-const LogoContainer = styled('img')(() => ({
-  height: '32px',
-  display: 'block',
-  objectFit: 'cover',
-}));
+function Logo(props: LogoProps): React.ReactElement {
+  const { black, short } = props;
+  const LogoString = short ? 'Fooxie' : 'Fooxie Corp Ltd';
 
-function Logo(): React.ReactElement {
   return (
-    <Base>
-      <LogoContainer src={logoSrc} />
-      Fooxie Corp Ltd
-    </Base>
+    <view.Base black={black}>
+      <view.LogoContainer src={logoSrc} />
+      {LogoString}
+    </view.Base>
   );
 }
 
