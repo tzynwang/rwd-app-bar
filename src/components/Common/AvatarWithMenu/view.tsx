@@ -42,7 +42,7 @@ export const AvatarMenuContainer = styled('div')(({ theme }) => ({
     },
   },
 }));
-export const AvatarMenuItem = styled(ButtonBase)(() => ({
+export const AvatarMenuItem = styled(ButtonBase)(({ theme }) => ({
   minHeight: '48px',
   width: '100%',
   display: 'flex',
@@ -50,4 +50,7 @@ export const AvatarMenuItem = styled(ButtonBase)(() => ({
   alignItems: 'center',
   gap: '16px',
   padding: '0 calc(24px + 8px)',
+  [theme.breakpoints.up('sm')]: {
+    padding: '0 24px'
+  }
 }));
