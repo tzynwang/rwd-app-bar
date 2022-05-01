@@ -3,11 +3,6 @@ import cn from 'classnames';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import type { Theme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
@@ -26,10 +21,6 @@ function Bar(props: BarProps): React.ReactElement {
   );
   const breakpointsUpMD = useMediaQuery((theme: Theme) =>
     theme.breakpoints.up('md')
-  );
-  const ListItemCollapseClassName = useMemo(
-    () => (breakpointsUpSM && !barBodyExpend ? 'ListItemCollapse' : ''),
-    [breakpointsUpSM, barBodyExpend]
   );
 
   /* Functions */
@@ -52,42 +43,31 @@ function Bar(props: BarProps): React.ReactElement {
     () => (barBodyExpend ? <CloseIcon /> : <MenuIcon />),
     [barBodyExpend]
   );
-  const BarBodyTitle = useMemo(() => {
+  const BarBodyLogoRow = useMemo(() => {
     if (breakpointsUpSM && barBodyExpend) {
       return (
-        <ListItem>
-          <ListItemButton
-            onClick={handleMenuIconClick}
-            classes={{
-              root: `BarBodyListItemButton BarBodyTitleRow ${ListItemCollapseClassName}`,
-            }}
-          >
-            <ListItemIcon>
-              <FirstPageIcon />
-            </ListItemIcon>
-            <ListItemText primary="menu expend" />
-          </ListItemButton>
-        </ListItem>
+        <views.BarBodyItem
+          onClick={handleMenuIconClick}
+          classes={{
+            root: barBodyExpend ? 'BarBodyExpend' : '',
+          }}
+        >
+          <FirstPageIcon
+            sx={{ visibility: breakpointsUpMD ? 'hidden' : 'visible' }}
+          />
+          <Logo black short={breakpointsUpSM} />
+        </views.BarBodyItem>
       );
     }
     if (breakpointsUpSM && !barBodyExpend) {
       return (
-        <ListItem>
-          <ListItemButton
-            onClick={handleMenuIconClick}
-            classes={{
-              root: `BarBodyListItemButton ${ListItemCollapseClassName}`,
-            }}
-          >
-            <ListItemIcon>
-              <LastPageIcon />
-            </ListItemIcon>
-          </ListItemButton>
-        </ListItem>
+        <views.BarBodyItem onClick={handleMenuIconClick}>
+          <LastPageIcon />
+        </views.BarBodyItem>
       );
     }
     return <React.Fragment />;
-  }, [breakpointsUpSM, barBodyExpend]);
+  }, [breakpointsUpSM, breakpointsUpMD, barBodyExpend]);
 
   /* Main */
   return (
@@ -98,22 +78,18 @@ function Bar(props: BarProps): React.ReactElement {
         {AvatarWithMenu}
       </views.BarHeader>
       <views.BarBody className={cn(barBodyExpend && 'BarBodyExpend')}>
-        <List>
-          {BarBodyTitle}
-          {model.LIST.map((l) => (
-            <ListItem key={l.id}>
-              <ListItemButton
-                onClick={handleListItemButtonClick(l.actionKey)}
-                classes={{
-                  root: `BarBodyListItemButton ${ListItemCollapseClassName}`,
-                }}
-              >
-                <ListItemIcon>{l.icon}</ListItemIcon>
-                <ListItemText primary={l.label} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        {BarBodyLogoRow}
+        {model.LIST.map((l) => (
+          <views.BarBodyItem
+            key={l.id}
+            onClick={handleListItemButtonClick(l.actionKey)}
+          >
+            {l.icon}
+            <span className={cn(!barBodyExpend && 'HideInCollapse')}>
+              {l.label}
+            </span>
+          </views.BarBodyItem>
+        ))}
       </views.BarBody>
     </React.Fragment>
   );

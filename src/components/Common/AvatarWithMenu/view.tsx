@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import ButtonBase from '@mui/material/ButtonBase';
 
 export const BaseContainer = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
@@ -32,6 +33,7 @@ export const AvatarMenuContainer = styled('div')(({ theme }) => ({
     transition: `all ${theme.transitions.duration.enteringScreen}ms ${theme.transitions.easing.easeIn}`,
     pointerEvents: 'none',
     '&.AvatarMenuExpend': {
+      padding: '8px 0',
       borderRadius: theme.shape.borderRadius,
       transform: 'unset',
       opacity: 1,
@@ -39,4 +41,13 @@ export const AvatarMenuContainer = styled('div')(({ theme }) => ({
       pointerEvents: 'auto',
     },
   },
+}));
+export const AvatarMenuItem = styled(ButtonBase)(() => ({
+  minHeight: '48px',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  gap: '16px',
+  padding: '0 calc(24px + 8px)',
 }));

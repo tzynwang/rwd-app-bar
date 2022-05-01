@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import ButtonBase from '@mui/material/ButtonBase';
 
 export const BarHeader = styled('div')(({ theme }) => ({
   height: '54px',
@@ -39,7 +40,23 @@ export const BarBody = styled('div')(({ theme }) => ({
     transform: 'translateX(0)',
     transition: `width ${theme.transitions.duration.enteringScreen}ms ${theme.transitions.easing.easeIn}`,
     '&.BarBodyExpend': {
-      width: 'clamp(240px, 25vw, 320px)',
+      width: 'clamp(200px, 25vw, 320px)',
     },
+  },
+}));
+export const BarBodyItem = styled(ButtonBase)(({ theme }) => ({
+  minHeight: '48px',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  gap: '16px',
+  padding: '0 calc(24px + 8px)',
+  '& .HideInCollapse': {
+    opacity: 0,
+    transition: `opacity ${theme.transitions.duration.leavingScreen}ms ${theme.transitions.easing.easeIn}`,
+  },
+  [theme.breakpoints.up('sm')]: {
+    padding: '0 calc((60px - 24px) / 2)',
   },
 }));
